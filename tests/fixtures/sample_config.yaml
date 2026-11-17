@@ -1,0 +1,189 @@
+# =====================================================================
+# Sample job finder settings
+# Edit this file on GitHub to change what the daily search looks for.
+# Lines starting with # are notes and are ignored.
+# =====================================================================
+
+timezone: America/Toronto
+
+email:
+  # Where the daily results are sent
+  report_to:
+    - someone@example.com
+  send_when_no_matches: true
+
+scoring:
+  threshold: 75          # jobs at or above this score go in "Matches"
+  near_miss_min: 60      # jobs between this and the threshold go in "Near misses"
+  skill_groups_for_full_points: 7
+  skill_groups_for_full_points_short_description: 5
+
+# ---------------------------------------------------------------------
+# Job titles
+# ---------------------------------------------------------------------
+titles:
+  primary:
+    - legal counsel
+    - counsel
+    - lawyer
+    - legal associate
+    - associate lawyer
+    - first-year associate
+    - contract manager
+    - contracts manager
+    - senior contract manager
+    - senior contracts manager
+    - risk management
+    - risk manager
+  secondary:
+    - corporate counsel
+    - commercial counsel
+    - contracts counsel
+    - procurement counsel
+    - contracts administrator
+    - contract administrator
+    - contracts specialist
+    - contract specialist
+    - contracts advisor
+    - contracts lead
+    - commercial manager
+    - claims manager
+    - compliance manager
+    - compliance advisor
+    - compliance officer
+    - risk & compliance
+    - risk and compliance
+    - legal advisor
+    - solicitor
+    - legal
+  exclude:
+    - paralegal
+    - law clerk
+    - legal clerk
+    - legal assistant
+    - legal secretary
+    - legal administrative
+    - executive assistant
+    - articling
+    - student
+    - intern
+    - internship
+    - co-op
+    - summer
+    - receptionist
+    - conveyancer
+    - credit risk
+    - market risk
+    - model risk
+    - liquidity risk
+    - fraud
+    - risk analyst
+    - nurse
+
+# ---------------------------------------------------------------------
+# Skills from the resume (used for the 40-point skills score).
+# Each group counts once if any of its words appear in the posting.
+# ---------------------------------------------------------------------
+skills:
+  commercial contracts: [commercial agreement, commercial contract, service agreement, services agreement, master services, supply agreement, vendor agreement, vendor contract]
+  drafting and negotiation: [draft, negotiat]
+  construction: [construction, ccdc, design-build, design build, subcontract, construction act]
+  P3 and infrastructure: [p3, public-private partnership, public private partnership, infrastructure, project finance, consortium]
+  RFPs and procurement: [rfp, rfq, procurement, tender, bid response]
+  M&A and joint ventures: [merger, acquisition, m&a, joint venture, due diligence, reorganization, restructuring]
+  corporate governance: [corporate governance, board of directors, corporate secretar, governance]
+  compliance and regulatory: [compliance, regulatory]
+  risk management: [risk management, risk allocation, risk assessment, risk mitigation, limitation of liability, indemnit, enterprise risk]
+  disputes and claims: [dispute, claims, litigation, mediation, arbitration, settlement]
+  managing external counsel: [external counsel, outside counsel]
+  policies and controls: [policy development, policies, internal control]
+  technology and SaaS: [saas, technology agreement, software, licensing]
+  real estate: [real estate, leasing, property]
+  insolvency: [insolvency, bankruptcy, creditor, debt recovery]
+  cross-border: [cross-border, cross border, international, multi-jurisdiction]
+
+# ---------------------------------------------------------------------
+# Sources
+# ---------------------------------------------------------------------
+
+# Adzuna: gathers postings from many Canadian job sites.
+# Needs the ADZUNA_APP_ID and ADZUNA_APP_KEY secrets (free key).
+adzuna:
+  enabled: true
+  max_days_old: 3
+
+# Employers whose careers site is on Workday (URL contains myworkdayjobs.com).
+# To add one: open the employer's job search page, copy the URL from the
+# browser, and add a new "- name: / url:" pair below.
+# The first run's "Run log" sheet shows if any URL needs fixing.
+workday:
+  enabled: true
+  search_phrases: [counsel, lawyer, legal, contracts, compliance, risk]
+  employers:
+    - name: Brookfield
+      url: https://brookfield.wd5.myworkdayjobs.com/brookfield
+    - name: TD Bank
+      url: https://td.wd3.myworkdayjobs.com/TD_Bank_Careers
+    - name: BMO
+      url: https://bmo.wd3.myworkdayjobs.com/External
+    - name: CIBC
+      url: https://cibc.wd3.myworkdayjobs.com/search
+    - name: Manulife
+      url: https://manulife.wd3.myworkdayjobs.com/MFCJH_Jobs
+    - name: Sun Life
+      url: https://sunlife.wd3.myworkdayjobs.com/Experienced-Jobs
+    - name: RBC
+      url: https://rbc.wd3.myworkdayjobs.com/RBCGLOBAL1
+
+# Employers on Greenhouse or Lever (add any you find later).
+careers_sites:
+  enabled: true
+  greenhouse: []
+  lever: []
+
+# Legal job boards with a public list of postings.
+job_boards:
+  enabled: true
+  boards:
+    - name: Clear Legal Jobs
+      list_urls:
+        - https://clearlegaljobs.com/states/jobs-in-ontario/
+      link_pattern: 'clearlegaljobs\.com/job/\d+/'
+      pages: 2
+      max_details: 40
+
+# LinkedIn / Indeed / Glassdoor job-alert emails sent to the Gmail address
+# in the GMAIL_ADDRESS secret.
+alert_emails:
+  enabled: true
+  days_back: 2
+  senders: [linkedin, indeed, glassdoor]
+
+# ---------------------------------------------------------------------
+# Weekly to-do (added to Monday's email)
+# ---------------------------------------------------------------------
+weekly:
+  day: monday
+  todo:
+    - Contact one legal recruiter (ZSA, Marsden Group, Cartel, The Counsel Network) and send the resume.
+    - Ask Cognition LLP or Caravel Law about contract or secondment work.
+    - Check OBA events - Construction & Infrastructure Law and Business Law sections.
+    - Message two people on LinkedIn (Osgoode LLM alumni or former PCL colleagues).
+    - Check the OBA and CBA job boards.
+  careers_pages:
+    - {name: PCL Construction, url: "https://careers.pcl.com"}
+    - {name: EllisDon, url: "https://www.ellisdon.com/careers"}
+    - {name: Aecon, url: "https://www.aecon.com/careers"}
+    - {name: Infrastructure Ontario, url: "https://www.infrastructureontario.ca"}
+    - {name: Metrolinx, url: "https://www.metrolinx.com/en/about-us/careers"}
+    - {name: Ontario Power Generation, url: "https://www.opg.com/careers"}
+    - {name: Hydro One, url: "https://jobs.hydroone.com"}
+    - {name: Oxford Properties / OMERS, url: "https://omers.com/careers"}
+    - {name: AtkinsRealis, url: "https://careers.atkinsrealis.com"}
+    - {name: Arcadis, url: "https://www.arcadis.com/en-ca/careers"}
+    - {name: WSP, url: "https://www.wsp.com/en-ca/careers"}
+    - {name: Stantec, url: "https://www.stantec.com/en/careers"}
+    - {name: Hatch, url: "https://www.hatch.com/Careers"}
+    - {name: AECOM, url: "https://aecom.jobs"}
+    - {name: Ontario Public Service, url: "https://www.gojobs.gov.on.ca"}
+    - {name: City of Toronto, url: "https://www.toronto.ca/home/jobs"}
